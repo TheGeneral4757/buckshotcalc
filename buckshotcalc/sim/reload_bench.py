@@ -29,6 +29,7 @@ import dataclasses
 import math
 import os
 import platform
+
 try:
     import resource
 except ImportError:  # Windows has no `resource`; peak memory is then reported as 0
