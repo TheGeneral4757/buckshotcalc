@@ -51,8 +51,28 @@ cd buckshotcalc
 ./start.sh --calc-only                # launch the TUI; type events by hand
 ```
 
-Windows: use WSL, or install with `pip install ".[tui]"` and run `buckshotcalc-tui`
-(`start.sh` is a bash script).
+**Windows** (PowerShell; `start.sh` is bash-only, so use pip directly):
+
+```powershell
+git clone https://github.com/TheGeneral4757/buckshotcalc
+cd buckshotcalc
+py -m venv .venv
+.venv\Scripts\pip install ".[tui]"
+.venv\Scripts\buckshotcalc --build          # one-time precompute, then cached
+.venv\Scripts\buckshotcalc-tui              # the TUI (use Windows Terminal)
+```
+
+### Platform support
+
+| Platform | Calculator and TUI | Live game bridge (`start.sh`) |
+| --- | --- | --- |
+| Arch / CachyOS (developed here) | Yes | Yes |
+| Other Linux (Debian, Ubuntu, Fedora, ...) | Yes | Should work, needs bash 4.4+ and a Steam Linux build |
+| Windows 10/11 | Yes, via pip as above (CI-tested) | No: `start.sh` and the mod install are Linux-only |
+| macOS | Calculator and TUI via pip (CI-tested) | No |
+
+Distro prerequisites: Arch `sudo pacman -S python git`; Debian/Ubuntu
+`sudo apt install python3 python3-venv git`; Fedora `sudo dnf install python3 git`.
 
 That is all most people need. The rest of this file is detail.
 

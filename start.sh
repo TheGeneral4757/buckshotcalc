@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # One command for BuckshotCalc: first-time setup, the calc, and the game with the live bridge.
 set -u
-ROOT="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-LOADER="${BR_LOADER:-$HOME/GitHub/_ref/BRMLNeo}"   # BRMLNeo mod loader checkout
-TEST_GAME="$HOME/GitHub/_ref/br-test/game"
+ROOT="$(cd "$(dirname "$0")" && pwd)"
+LOADER="${BR_LOADER:-$ROOT/temp/BRMLNeo}"   # BRMLNeo mod loader checkout
+TEST_GAME="${BR_GAME:-$HOME/GitHub/_ref/br-test/game}"   # the author's test copy; absent elsewhere
 LOADER_FILES=(addons/JSON_Schema_Validator addons/mod_loader godot/global_script_class_cache.cfg
               godot/uid_cache.bin override.cfg)
 
@@ -54,7 +54,8 @@ if [ -z "$game" ]; then
     d="$lib/steamapps/common/Buckshot Roulette/Buckshot Roulette_linux"
     [ -x "$d/Buckshot Roulette.x86_64" ] && { game="$d"; break; }
   done < <(grep -ho '"path"[[:space:]]*"[^"]*"' ~/.local/share/Steam/steamapps/libraryfolders.vdf \
-           ~/.steam/steam/steamapps/libraryfolders.vdf 2>/dev/null | cut -d'"' -f4 | sort -u)
+           ~/.steam/steam/steamapps/libraryfolders.vdf \
+           ~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/libraryfolders.vdf 2>/dev/null | cut -d'"' -f4 | sort -u)
   [ -n "$game" ] || { echo "Buckshot Roulette is not installed in any Steam library"; exit 1; }
 fi
 
