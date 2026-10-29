@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 
 from buckshotcalc.engine.rules import load_rules
 from buckshotcalc.engine.solver import Solver
@@ -23,16 +24,31 @@ def _items(text: str) -> ItemCounts:
     return ItemCounts.of(**{name: int(n) for name, n in pairs})
 
 
+def _build(a: argparse.Namespace) -> None:
+    solver = Solver(load_rules(), GameMode.from_config_name(a.mode))
+    solver.build_reload_table(
+        lambda e: print(f"sweep {e.sweep}/{e.sweeps_max}  {e.elapsed_s:.0f}s", end="\r", flush=True)
+        if e.phase == "sweep"
+        else None
+    )
+    print("\nreload table built")
+
+
 def main(argv: list[str] | None = None) -> None:
     p = argparse.ArgumentParser(prog="buckshotcalc", description=__doc__.splitlines()[0])
-    p.add_argument("--live", type=int, required=True, help="live shells left (all unseen)")
-    p.add_argument("--blank", type=int, required=True, help="blank shells left (all unseen)")
-    p.add_argument("--hp", type=int, nargs=2, metavar=("YOU", "DEALER"), required=True)
-    p.add_argument("--max-hp", type=int, required=True)
+    p.add_argument("--build", action="store_true", help="build the one-time reload table and exit")
+    p.add_argument("--live", type=int, help="live shells left (all unseen)")
+    p.add_argument("--blank", type=int, help="blank shells left (all unseen)")
+    p.add_argument("--hp", type=int, nargs=2, metavar=("YOU", "DEALER"))
+    p.add_argument("--max-hp", type=int)
     p.add_argument("--items", default="", help="your items, e.g. beer=1,handsaw=2")
     p.add_argument("--dealer-items", default="", help="the Dealer's items, same format")
     p.add_argument("--mode", default="double_or_nothing", choices=[m.config_name for m in GameMode])
     a = p.parse_args(argv)
+    if a.build:
+        return _build(a)
+    if None in (a.live, a.blank, a.hp, a.max_hp):
+        p.error("--live, --blank, --hp and --max-hp are required (or use --build)")
 
     n = a.live + a.blank
     state = GameState.create(
@@ -43,6 +59,8 @@ def main(argv: list[str] | None = None) -> None:
         items=(_items(a.items), _items(a.dealer_items)),
     )
     solver = Solver(load_rules(), GameMode.from_config_name(a.mode))
+    if not solver.has_cached_reload_table():
+        sys.exit("no reload table yet (one-time build, about 1 h). Run: buckshotcalc --build")
     result = solver.evaluate(state)
     print(f"P(win round) = {result.value:.1%}")
     for c in result.children:

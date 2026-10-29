@@ -3,47 +3,112 @@
 An exact expectimax solver for Buckshot Roulette, with an optional live TUI.
 MIT licensed.
 
-> **Unmaintained, AI-written, use at your own risk.** All of this code was written
-> by AI (Claude Code) under the direction of James Thiessen, and the repo is
-> published as-is. It may not be maintained. See [Notices](#notices).
+> **Notice:** this software was written entirely by AI (Claude Code) under the
+> direction of James Thiessen. It is provided as-is, without warranty, and is not
+> actively maintained. See [Notices](#notices).
 
-A real-time decision assistant for **Buckshot Roulette**. Feed it what happens at
-the table; it returns the play with the highest probability of winning the round,
-ranked against every alternative, with the reasoning behind it.
+## What is this?
 
-Not a shell-odds calculator — an exact game-tree solver. Anyone can compute
-`live / (live + blank)`. The value is in the decisions that ratio doesn't answer:
-whether an information item is worth spending, whether a marginal gamble is
-correct at your current health, and when the Dealer's own policy will beat it for
-you.
+A decision assistant for **Buckshot Roulette** (the Dealer, Double or Nothing
+mode). Tell it the position: shells left, both players' health, and who holds
+which items. It returns the play with the highest chance of winning the round,
+ranked against every alternative.
 
-## Install
+It is an exact game-tree solver, not a shell-odds calculator. Anyone can compute
+`live / (live + blank)`. The value is in the calls that ratio can't make: whether
+an item is worth spending, whether a gamble is right at your current health, and
+when the Dealer's own behaviour will do the work for you.
 
-Python >= 3.11. The solver itself has **no dependencies**; the TUI is optional.
+There are two ways to use it:
 
-| You want | Install | Run |
-| --- | --- | --- |
-| Just the calculator (no TUI, stdlib only) | `pip install .` | `buckshotcalc --live 3 --blank 2 --hp 4 4 --max-hp 4 --items beer=1` |
-| Calculator as a library | `pip install .` | `from buckshotcalc.engine.solver import Solver` |
-| Calculator and TUI | `pip install ".[tui]"` | `buckshotcalc-tui` |
+- **The calculator**: a command (or Python library) with no dependencies. Give it a
+  position, get ranked moves.
+- **The TUI**: a terminal app that tracks a whole round as you type in events,
+  or follows the game live through an optional mod.
+
+## Quick start
+
+Needs Python 3.11+ and git. Pick one.
+
+Prefer a download? Grab the wheel from the [Releases page](https://github.com/TheGeneral4757/buckshotcalc/releases) and `pip install` it (add `[tui]` for the TUI, e.g. `pip install "buckshotcalc-1.0.0-py3-none-any.whl[tui]"`).
+
+**Calculator only** (no TUI, no dependencies):
 
 ```bash
 git clone https://github.com/TheGeneral4757/buckshotcalc
 cd buckshotcalc
-python -m venv .venv && .venv/bin/pip install ".[tui]"   # or "." for calc-only
-.venv/bin/buckshotcalc-tui                                 # the TUI
-.venv/bin/buckshotcalc --help                              # the headless calc
+python3 -m venv .venv && .venv/bin/pip install .
+.venv/bin/buckshotcalc --build        # one-time precompute, about 1 hour, then cached
+.venv/bin/buckshotcalc --live 3 --blank 2 --hp 4 4 --max-hp 4 --items beer=1,handsaw=1
 ```
 
-Calc-only works by simply not installing the `[tui]` extra: `buckshotcalc/engine/`
-and `buckshotcalc/sim/` import only the standard library. If you already have the
-TUI installed, you can delete `buckshotcalc/tui/` and nothing else breaks.
-Contributors use `pip install -e ".[dev]"`.
+**Calculator and TUI:**
 
-**First run needs a reload table.** The solver's `V_reload` fixed point is a
-one-time precompute; until it exists the TUI shows a yellow
-`RELOAD TABLE NOT BUILT` and withholds recommendations rather than guessing.
-See below.
+```bash
+git clone https://github.com/TheGeneral4757/buckshotcalc
+cd buckshotcalc
+./start.sh --build                    # one-time precompute, about 35 min, then cached
+./start.sh --calc-only                # launch the TUI; type events by hand
+```
+
+Windows: use WSL, or install with `pip install ".[tui]"` and run `buckshotcalc-tui`
+(`start.sh` is a bash script).
+
+That is all most people need. The rest of this file is detail.
+
+## The calculator in detail
+
+```bash
+buckshotcalc --live 3 --blank 2 --hp 4 4 --max-hp 4 \
+             --items beer=1,handsaw=1 --dealer-items cigarettes=1
+```
+
+| Flag | Meaning |
+| --- | --- |
+| `--live N`, `--blank N` | Shells left in the chamber (all unseen) |
+| `--hp YOU DEALER` | Current health, and `--max-hp N` for the round |
+| `--items`, `--dealer-items` | `name=count,name=count`. Names: `cigarettes handcuffs beer handsaw magnifying_glass adrenaline expired_medicine burner_phone inverter remote` |
+| `--mode` | `double_or_nothing` (default) or `base` |
+| `--build` | Build the reload table, then exit |
+
+It prints your win probability and every legal move ranked. A move marked
+`(wasted)` is strictly worse than the best one. It always assumes it is your turn,
+with the chamber fully unseen. For known shells, cuffs, a sawed barrel and so on,
+use the TUI or the Python API below.
+
+As a library (standard library only):
+
+```python
+from buckshotcalc.engine.rules import load_rules
+from buckshotcalc.engine.solver import Solver
+from buckshotcalc.engine.state import ChamberState, GameMode, GameState, Player
+
+solver = Solver(load_rules(), GameMode.DOUBLE_OR_NOTHING)
+state = GameState.create(ChamberState.create((None,) * 5, 3, 2), hp=(4, 4), max_hp=4,
+                         turn=Player.PLAYER)
+print(solver.evaluate(state).value)
+```
+
+## The TUI in detail
+
+Install with `pip install ".[tui]"` (or let `./start.sh` do it), then run
+`buckshotcalc-tui` or `./start.sh --calc-only`. In the calc, `ctrl+t` builds the
+reload table if it is missing.
+
+### Reload table
+
+The solver needs a one-time precompute (the `V_reload` fixed point). Until it
+exists, the calculator exits with a message and the TUI shows a yellow
+`RELOAD TABLE NOT BUILT` and withholds answers rather than guessing. It is cached in
+`~/.cache/buckshotcalc/`, so you pay once per `rules.toml` and engine version.
+Full build and timing details are in
+[Building the reload table](#building-the-reload-table-and-running-a-simulation).
+
+### Calculator without the TUI
+
+The `engine/` and `sim/` packages import only the standard library. Not installing
+the `[tui]` extra is enough. Deleting `buckshotcalc/tui/` also works.
+Contributors use `pip install -e ".[dev]"`.
 
 ## Status
 
@@ -103,14 +168,14 @@ cached. (`full` and `single` are the *benchmark* subcommands — they
 deliberately bypass the cache so they always do real work, and leave nothing
 behind.)
 
-Then run the §12.1 validation harness against Double or Nothing:
+Then run the validation harness against Double or Nothing:
 
 ```bash
 .venv/bin/python -m buckshotcalc.sim.montecarlo --mode don --positions 100 --trials 100000
 ```
 
 It prints the worst positions by statistical significance and by raw error,
-then the §12.1 acceptance line: how many positions have
+then the acceptance line: how many positions have
 `|predicted − empirical| >= 0.01` (acceptance requires zero). Start smaller
 (`--positions 20 --trials 5000`) for a quick signal; the full run is long.
 
@@ -155,8 +220,9 @@ Python ≥3.11 · [Textual](https://textual.textualize.io/) TUI · stdlib `tomll
 
 ## Contributing
 
-Short version: **issues and pull requests may go unanswered.** Forks are welcome.
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+This repository is not actively maintained, and issues and pull requests may not
+receive a response. Forks are encouraged. Guidelines for reporting bugs and
+proposing changes are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits
 
@@ -170,25 +236,24 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 - **[MSLaFaver/BRMLNeo](https://github.com/MSLaFaver/BRMLNeo)**, the mod loader the
   optional live bridge relies on.
 
-Thanks to all of them. Any mistakes in this repo are ours, not theirs.
+The authors and maintainers listed above are not responsible for any errors in this repository.
 
 ## Notices
 
-- **AI authorship** (details in [AI-DISCLOSURE.md](AI-DISCLOSURE.md)). All code, tests, docs and the game-rules analysis in this
-  repo were produced by AI (Anthropic's Claude, via Claude Code), prompted,
-  directed and reviewed at a high level by James Thiessen. Nothing was
-  written line by line by a human. Treat it like any unaudited code: read it
-  before you trust it. The test suite and Monte Carlo checks (see `sim/montecarlo.py`)
-  are the evidence of correctness, not human review.
-- **No warranty, no support.** MIT licensed, provided "as is". The author may not
-  maintain this repo.
-- **Not affiliated.** Buckshot Roulette is by Mike Klubnika. This is an
-  unofficial fan tool with no connection to the game's developer or publisher.
-  Rules in `rules.toml` come from observing the game and may be wrong or go stale
-  after a game update.
-- **Game bridge.** `bridge/` and `start.sh` install a mod loader and a mod into
-  your game folder. Optional, use at your own risk, and read `bridge/README.md`
-  first. Don't use it in a way that breaks the game's terms of service.
+- **AI authorship.** All code, tests, documentation, and rules analysis in this
+  repository were produced by AI (Anthropic's Claude, via Claude Code), directed
+  and approved by James Thiessen, and have not had independent human review. See
+  [AI-DISCLOSURE.md](AI-DISCLOSURE.md).
+- **No warranty or support.** The software is provided "as is" under the MIT
+  License. The author may not maintain it.
+- **No affiliation.** Buckshot Roulette is created by Mike Klubnika. This is an
+  unofficial fan project with no connection to the game's developer or publisher.
+  The rules in `rules.toml` are derived from observation of the game and may be
+  incorrect or become outdated after a game update.
+- **Game bridge.** The optional `bridge/` directory and `start.sh` install a mod
+  loader and a mod into your game folder. Use them at your own risk, review
+  `bridge/README.md` first, and ensure your use complies with the game's terms of
+  service.
 
 ---
 

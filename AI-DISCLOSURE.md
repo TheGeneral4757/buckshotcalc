@@ -1,16 +1,24 @@
-# AI disclosure
+# AI Disclosure
 
-All source code, tests, documentation and rules analysis in this repository were
-written by AI: Anthropic's Claude, used through Claude Code. James Thiessen
-prompted, directed, tested against the game, and approved the work. No code was
-hand-written line by line.
+## Authorship
 
-What that means for you:
+All source code, tests, documentation, and rules analysis in this repository were
+written by an AI system: Anthropic's Claude, operated through Claude Code. James
+Thiessen specified the requirements, directed the work, tested it against the
+game, and approved the result. No part of the code was written line by line by a
+human.
 
-- It has not had independent human code review. Verify before relying on it.
-- Correctness evidence is the automated test suite and the Monte Carlo agreement
-  check in `sim/montecarlo.py`, not human audit.
-- Game rules were inferred from the game's observed behaviour and may be wrong
-  (see the confidence levels in `buckshotcalc/rules.toml`).
+## Implications for users
 
-Credit and copyright for the repo as published: James Thiessen, MIT license.
+- The code has **not** undergone independent human code review. It should be
+  reviewed before being relied upon.
+- Evidence of correctness consists of the automated test suite and a Monte Carlo
+  agreement check (`buckshotcalc/sim/montecarlo.py`), not a human audit.
+- The game rules were inferred from the game's observed behaviour and from
+  community-maintained references, and may be incorrect or become outdated after a
+  game update. Each rule carries a confidence level in `buckshotcalc/rules.toml`.
+
+## Copyright and license
+
+The repository is published under the [MIT License](LICENSE), with copyright held
+by James Thiessen (c) 2026.

@@ -70,8 +70,8 @@ fi
 # first run: the venv
 if [ ! -x "$ROOT/.venv/bin/python" ]; then
   echo "first run: setting up .venv ..."
-  if command -v uv >/dev/null; then (cd "$ROOT" && uv venv -q && uv pip install -q -e .)
-  else python3 -m venv "$ROOT/.venv" && "$ROOT/.venv/bin/pip" install -q -e "$ROOT"; fi || exit 1
+  if command -v uv >/dev/null; then (cd "$ROOT" && uv venv -q && uv pip install -q -e ".[tui]")
+  else python3 -m venv "$ROOT/.venv" && "$ROOT/.venv/bin/pip" install -q -e "$ROOT[tui]"; fi || exit 1
 fi
 PY="$ROOT/.venv/bin/python"
 

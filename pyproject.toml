@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "buckshotcalc"
-version = "1.0.0.dev0"
+version = "1.0.0"
 description = "Exact game-tree decision assistant for Buckshot Roulette"
 readme = "README.md"
 requires-python = ">=3.11"
