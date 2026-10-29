@@ -83,6 +83,8 @@ from buckshotcalc.engine.rules import load_rules
 from buckshotcalc.engine.solver import Solver
 from buckshotcalc.engine.state import GameMode
 r = load_rules()
+from buckshotcalc.bundled import install
+install()
 sys.exit(0 if Solver(r, GameMode.DOUBLE_OR_NOTHING).has_cached_reload_table() else 1)"
 }
 if ! tables_ok; then

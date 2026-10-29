@@ -69,6 +69,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Vertical
 from textual.widgets import Static
 
+from buckshotcalc import bundled
 from buckshotcalc.engine.actions import Action, ActionKind, legal_actions
 from buckshotcalc.engine.rules import Rules, load_rules
 from buckshotcalc.engine.solver import SearchCancelled, SearchResult, Solver
@@ -1011,6 +1012,7 @@ def main() -> None:
     ap.add_argument("--advice", type=Path, help="advice log file (default: by --record)")
     ap.add_argument("--no-advice", action="store_true", help="do not save the advice log")
     args = ap.parse_args()
+    bundled.install()
     advice = None
     if not args.no_advice:
         advice = args.advice or (advice_mod.advice_path_for(args.record) if args.record else None)

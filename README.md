@@ -38,7 +38,6 @@ Prefer a download? Grab the wheel from the [Releases page](https://github.com/Th
 git clone https://github.com/TheGeneral4757/buckshotcalc
 cd buckshotcalc
 python3 -m venv .venv && .venv/bin/pip install .
-.venv/bin/buckshotcalc --build        # one-time precompute, about 1 hour, then cached
 .venv/bin/buckshotcalc --live 3 --blank 2 --hp 4 4 --max-hp 4 --items beer=1,handsaw=1
 ```
 
@@ -47,7 +46,6 @@ python3 -m venv .venv && .venv/bin/pip install .
 ```bash
 git clone https://github.com/TheGeneral4757/buckshotcalc
 cd buckshotcalc
-./start.sh --build                    # one-time precompute, about 35 min, then cached
 ./start.sh --calc-only                # launch the TUI; type events by hand
 ```
 
@@ -58,7 +56,6 @@ git clone https://github.com/TheGeneral4757/buckshotcalc
 cd buckshotcalc
 py -m venv .venv
 .venv\Scripts\pip install ".[tui]"
-.venv\Scripts\buckshotcalc --build          # one-time precompute, then cached
 .venv\Scripts\buckshotcalc-tui              # the TUI (use Windows Terminal)
 ```
 
@@ -74,7 +71,8 @@ py -m venv .venv
 Distro prerequisites: Arch `sudo pacman -S python git`; Debian/Ubuntu
 `sudo apt install python3 python3-venv git`; Fedora `sudo dnf install python3 git`.
 
-That is all most people need. The rest of this file is detail.
+The solver's one-time reload table is already included, so there is nothing to
+build. That is all most people need. The rest of this file is detail.
 
 ## The calculator in detail
 
@@ -89,7 +87,7 @@ buckshotcalc --live 3 --blank 2 --hp 4 4 --max-hp 4 \
 | `--hp YOU DEALER` | Current health, and `--max-hp N` for the round |
 | `--items`, `--dealer-items` | `name=count,name=count`. Names: `cigarettes handcuffs beer handsaw magnifying_glass adrenaline expired_medicine burner_phone inverter remote` |
 | `--mode` | `double_or_nothing` (default) or `base` |
-| `--build` | Build the reload table, then exit |
+| `--build` | Build the reload table if it is missing or stale, then exit |
 
 It prints your win probability and every legal move ranked. A move marked
 `(wasted)` is strictly worse than the best one. It always assumes it is your turn,
@@ -117,12 +115,13 @@ reload table if it is missing.
 
 ### Reload table
 
-The solver needs a one-time precompute (the `V_reload` fixed point). Until it
-exists, the calculator exits with a message and the TUI shows a yellow
-`RELOAD TABLE NOT BUILT` and withholds answers rather than guessing. It is cached in
-`~/.cache/buckshotcalc/`, so you pay once per `rules.toml` and engine version.
-Full build and timing details are in
-[Building the reload table](#building-the-reload-table-and-running-a-simulation).
+The solver needs a one-time precompute (the `V_reload` fixed point, normally
+35 min to 1 h). The Double or Nothing table for the current rules ships in
+`buckshotcalc/tables/` and is installed into `~/.cache/buckshotcalc/` on first
+run, so you normally never build it. It becomes invalid if you edit `rules.toml`
+or the engine code; then `buckshotcalc --build` (or `ctrl+t` in the TUI) remakes
+it. Full details, including what invalidates it and the validation run, are in
+[docs/reload-table.md](docs/reload-table.md).
 
 ### Calculator without the TUI
 
@@ -165,6 +164,8 @@ the game's numbers.
 Details: [`bridge/README.md`](bridge/README.md), contract: [`docs/live-bridge.md`](docs/live-bridge.md).
 
 ## Building the reload table, and running a simulation
+
+> The shipped table makes this unnecessary unless you change `rules.toml` or the engine. Overview: [docs/reload-table.md](docs/reload-table.md).
 
 The reload fixed point is the expensive part. Build it once —
 it is cached to disk under `~/.cache/buckshotcalc/`, keyed by the rules

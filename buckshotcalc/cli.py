@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+from buckshotcalc.bundled import install
 from buckshotcalc.engine.rules import load_rules
 from buckshotcalc.engine.solver import Solver
 from buckshotcalc.engine.state import (
@@ -45,6 +46,7 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--dealer-items", default="", help="the Dealer's items, same format")
     p.add_argument("--mode", default="double_or_nothing", choices=[m.config_name for m in GameMode])
     a = p.parse_args(argv)
+    install()
     if a.build:
         return _build(a)
     if None in (a.live, a.blank, a.hp, a.max_hp):
