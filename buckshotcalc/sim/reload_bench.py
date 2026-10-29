@@ -29,7 +29,10 @@ import dataclasses
 import math
 import os
 import platform
-import resource
+try:
+    import resource
+except ImportError:  # Windows has no `resource`; peak memory is then reported as 0
+    resource = None
 import time
 from collections.abc import Callable
 
@@ -243,6 +246,8 @@ def _peak_rss_mb() -> float:
     waited on, which is why every measurement below reads it *after* a
     `multiprocessing.Pool`'s `with` block has exited (workers joined).
     """
+    if resource is None:
+        return 0.0
     self_kb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     children_kb = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
     return max(self_kb, children_kb) / 1024.0
