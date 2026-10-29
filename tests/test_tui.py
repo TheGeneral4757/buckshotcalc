@@ -160,7 +160,7 @@ def test_cap_reached_flag_surfaces_through_search_result(tmp_path):
     vm = DashboardViewModel(
         state=state, result=result, solving=False, reload_table_missing=False,
     )
-    console = Console(width=100, file=open(os.devnull, "w"), record=True)
+    console = Console(width=100, file=open(os.devnull, "w", encoding="utf-8"), record=True)
     console.print(render_dashboard(vm, rules))
     output = console.export_text()
     assert "SEARCH CAP REACHED" in output
@@ -201,7 +201,7 @@ def test_render_dashboard_meets_16ms_budget():
         solving=False,
         reload_table_missing=False,
     )
-    console = Console(width=100, file=open(os.devnull, "w"))
+    console = Console(width=100, file=open(os.devnull, "w", encoding="utf-8"))
 
     # Warm up (module import / first-render JIT-ish costs), then measure.
     for _ in range(3):
@@ -233,7 +233,7 @@ def test_render_dashboard_handles_missing_reload_table_without_solving():
         reload_table_missing=True,
     )
     renderable = render_dashboard(vm, RULES)
-    console = Console(width=100, file=open(os.devnull, "w"))
+    console = Console(width=100, file=open(os.devnull, "w", encoding="utf-8"))
     console.print(renderable)  # must not raise
 
 
@@ -463,7 +463,7 @@ def test_no_element_paints_a_background():
         log=("you used the saw",),
         status="something went wrong",
     )
-    console = Console(width=160, file=open(os.devnull, "w"))
+    console = Console(width=160, file=open(os.devnull, "w", encoding="utf-8"))
     painted = [
         seg for seg in console.render(render_dashboard(vm, RULES))
         if seg.style is not None and seg.style.bgcolor is not None
@@ -833,7 +833,7 @@ def test_low_own_health_recolours_every_border_and_names_it_in_the_banner():
     assert "CRITICAL - 1 HEALTH LEFT" in _render_text(crit)
 
     def borders(vm):
-        console = Console(width=160, file=open(os.devnull, "w"))
+        console = Console(width=160, file=open(os.devnull, "w", encoding="utf-8"))
         return {
             str(seg.style.color.name)
             for seg in console.render(render_dashboard(vm, RULES))
