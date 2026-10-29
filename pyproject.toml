@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "buckshotcalc"
+version = "1.0.0.dev0"
+description = "Exact game-tree decision assistant for Buckshot Roulette"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "James Thiessen" }]
+dependencies = []  # the solver is pure stdlib; the TUI is the [tui] extra
+
+[project.optional-dependencies]
+tui = [
+    "textual>=0.80",
+    "rich>=13.7",
+]
+dev = [
+    "textual>=0.80",
+    "rich>=13.7",
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+buckshotcalc = "buckshotcalc.cli:main"
+buckshotcalc-tui = "buckshotcalc.tui.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["buckshotcalc"]
+
+# NOTE: no `force-include` for rules.toml. It lives inside the package
+# directory, so `packages = ["buckshotcalc"]` already ships it in the wheel
+# (asserted by tests/test_layering.py's packaging guards). Force-including it made
+# an *editable* install materialize a real `site-packages/buckshotcalc/`
+# directory holding only rules.toml and no `__init__.py`, which shadowed the
+# source tree for any process whose sys.path[0] was not the repo root --
+# `import buckshotcalc.sim` then failed outright.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "slow: long-running verification (Monte Carlo, reload fixed point)",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

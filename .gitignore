@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# solver artifacts
+.cache/
+*.reload_table
+sessions/*.jsonl
+
+temp/
+.venv/
+
+# local-only: not published with the public repo
+.claude/
+CLAUDE.md
+SPEC.md
+.code-review-graph/
+.idea/
+
+# generated cheat sheets (sim/tables.py output), not source
+docs/item-value-tables.txt
+docs/item-value-tables.md

@@ -1,0 +1,201 @@
+{"ev":"hello","game_ver":"0.0.0","godot":"4.1","mode":"endless","probe":"0.2.0","scripts":{"BurnerPhone.gd":"26e875eaa12bc100dc0cff8c16312cb2075adf816ea00fd91879f197cd914447","DealerIntelligence.gd":"7d1033dc1561730b7d4c67fcdd66347e60d7e9b86d7515e6b5bd549238d4f7af","HandManager.gd":"d33d579d2244b3e656da77bcff1717a11fe63e512137fb6c6033fe1abeddc47d","HealthCounter.gd":"aef75511fc4e0e839ebc94ae3ca54ae1c229be3901e0bcc75a69117f658b4dda","ItemInteraction.gd":"1b2f90be8f2828c4cd70ad2acd16bd1df01d81c0cac81267f221e50e30096c1f","MedicineManager.gd":"e71ff431b4dd8d09b0ad42fb304c541718fa96fe4dbdb7b048c97cf51de86c37","RoundManager.gd":"6e6e36a5dd854189350fe26328433948280fea1c5612d1fcab21043de0cc0021","ShellEjectManager.gd":"f60cbb34831ba96a2ecb50d90c5364994b9cfe84f01aa535aa04480ca893aaaf","ShotgunShooting.gd":"43d86cc23be57a3ec2f3a7a8b47ed52e9d0305e28330930beadc35d39b6ed634"},"scripts_sha":"74825904cca924aaf53f2f1f93276e5c6ddbfcf045d6ec8bd27f0e9dfdd7bf9a","seq":1,"t":5111,"v":1}
+{"blank":4,"ev":"load","first_turn":"player","hp":[4,4],"items":{"dealer":{"adrenaline":2,"handcuffs":1},"player":{"adrenaline":1,"burner phone":1,"handcuffs":1}},"kind":"new_round","live":4,"max_hp":4,"seq":2,"t":8618,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":3,"shell":"live","t":8917,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":4,"t":9042,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[4,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"handcuffs":1},"player":{"adrenaline":1,"burner phone":1,"handcuffs":1}},"left":7,"max_hp":4,"sawed":false,"seq":5,"t":9042,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"handcuffs","seq":6,"stolen":false,"t":9087,"v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":7,"stolen":false,"t":9143,"v":1}
+{"actor":"dealer","ev":"item","item":"burner phone","seq":8,"stolen":true,"t":9216,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":9,"shell":"live","t":9464,"target":"self","v":1}
+{"cuffed_skip":true,"ev":"turn","seq":10,"t":9629,"v":1,"who":"player"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[4,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{"adrenaline":1,"handcuffs":1}},"left":6,"max_hp":4,"sawed":false,"seq":11,"t":9629,"turn":"player","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":12,"t":9664,"v":1,"who":"dealer"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[4,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{"adrenaline":1,"handcuffs":1}},"left":6,"max_hp":4,"sawed":false,"seq":13,"t":9664,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":14,"shell":"blank","t":9847,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":15,"t":9864,"v":1,"who":"dealer"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[4,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{"adrenaline":1,"handcuffs":1}},"left":5,"max_hp":4,"sawed":false,"seq":16,"t":9864,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":17,"shell":"blank","t":10025,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":18,"t":10041,"v":1,"who":"dealer"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[4,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{"adrenaline":1,"handcuffs":1}},"left":4,"max_hp":4,"sawed":false,"seq":19,"t":10042,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":20,"shell":"live","t":10162,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":21,"t":10333,"v":1,"who":"player"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[3,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{"adrenaline":1,"handcuffs":1}},"left":3,"max_hp":4,"sawed":false,"seq":22,"t":10333,"turn":"player","v":1}
+{"actor":"player","ev":"item","item":"adrenaline","seq":23,"stolen":false,"t":10609,"v":1}
+{"actor":"player","ev":"item","item":"handcuffs","seq":24,"stolen":false,"t":11309,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":25,"shell":"live","t":12067,"target":"self","v":1}
+{"cuffed_skip":true,"ev":"turn","seq":26,"t":12179,"v":1,"who":"dealer"}
+{"cuffed":[false,true],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{}},"left":2,"max_hp":4,"sawed":false,"seq":27,"t":12179,"turn":"dealer","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":28,"t":12205,"v":1,"who":"player"}
+{"cuffed":[false,true],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{}},"left":2,"max_hp":4,"sawed":false,"seq":29,"t":12205,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":30,"shell":"blank","t":12815,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":31,"t":12845,"v":1,"who":"player"}
+{"cuffed":[false,true],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1},"player":{}},"left":1,"max_hp":4,"sawed":false,"seq":32,"t":12845,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":33,"shell":"blank","t":13515,"target":"self","v":1}
+{"blank":3,"ev":"load","first_turn":"player","hp":[2,2],"items":{"dealer":{"adrenaline":1,"beer":2,"handsaw":1,"inverter":1},"player":{"beer":1,"expired medicine":1,"handcuffs":1,"inverter":1}},"kind":"reload","live":2,"max_hp":4,"seq":34,"t":16270,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":35,"shell":"blank","t":17002,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":36,"t":17040,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"beer":2,"handsaw":1,"inverter":1},"player":{"beer":1,"expired medicine":1,"handcuffs":1,"inverter":1}},"left":4,"max_hp":4,"sawed":false,"seq":37,"t":17040,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":38,"stolen":false,"t":17085,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":39,"shell":"blank","t":17152,"v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":40,"stolen":false,"t":17182,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":41,"shell":"blank","t":17250,"v":1}
+{"actor":"dealer","ev":"item","item":"handsaw","seq":42,"stolen":false,"t":17279,"v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":43,"stolen":false,"t":17399,"v":1}
+{"actor":"dealer","ev":"item","item":"handcuffs","seq":44,"stolen":true,"t":17472,"v":1}
+{"actor":"dealer","damage":2,"ev":"shot","seq":45,"shell":"live","t":17625,"target":"opponent","v":1}
+{"ev":"end","seq":46,"t":17627,"v":1,"who":"player"}
+{"blank":1,"ev":"load","first_turn":"player","hp":[4,4],"items":{"dealer":{"beer":1,"burner phone":1},"player":{"expired medicine":1,"inverter":1}},"kind":"new_round","live":1,"max_hp":4,"seq":47,"t":28524,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":48,"shell":"live","t":28823,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":49,"t":28890,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[3,4],"hp_hidden":[false,false],"items":{"dealer":{"beer":1,"burner phone":1},"player":{"expired medicine":1,"inverter":1}},"left":1,"max_hp":4,"sawed":false,"seq":50,"t":28891,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":51,"shell":"blank","t":29101,"target":"self","v":1}
+{"blank":1,"ev":"load","first_turn":"player","hp":[3,4],"items":{"dealer":{"beer":1,"burner phone":1,"expired medicine":1,"handsaw":2,"inverter":1},"player":{"adrenaline":1,"beer":1,"cigarettes":1,"expired medicine":1,"inverter":1,"magnifying glass":1}},"kind":"reload","live":1,"max_hp":4,"seq":52,"t":31976,"v":1}
+{"actor":"player","ev":"item","item":"magnifying glass","seq":53,"stolen":false,"t":32265,"v":1}
+{"ev":"glass","seq":54,"shell":"live","t":32266,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":55,"shell":"live","t":33024,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":56,"t":33090,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,4],"hp_hidden":[false,false],"items":{"dealer":{"beer":1,"burner phone":1,"expired medicine":1,"handsaw":2,"inverter":1},"player":{"adrenaline":1,"beer":1,"cigarettes":1,"expired medicine":1,"inverter":1}},"left":1,"max_hp":4,"sawed":false,"seq":57,"t":33090,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"inverter","seq":58,"stolen":false,"t":33135,"v":1}
+{"actor":"dealer","ev":"item","item":"handsaw","seq":59,"stolen":false,"t":33277,"v":1}
+{"actor":"dealer","damage":2,"ev":"shot","seq":60,"shell":"live","t":33495,"target":"opponent","v":1}
+{"ev":"end","seq":61,"t":33497,"v":1,"who":"player"}
+{"blank":3,"ev":"load","first_turn":"player","hp":[3,3],"items":{"dealer":{"adrenaline":1,"cigarettes":1,"inverter":1,"magnifying glass":1},"player":{"adrenaline":1,"beer":1,"inverter":2}},"kind":"new_round","live":2,"max_hp":3,"seq":62,"t":45787,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":63,"shell":"live","t":46086,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":64,"t":46153,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"cigarettes":1,"inverter":1,"magnifying glass":1},"player":{"adrenaline":1,"beer":1,"inverter":2}},"left":4,"max_hp":3,"sawed":false,"seq":65,"t":46153,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"magnifying glass","seq":66,"stolen":false,"t":46198,"v":1}
+{"actor":"dealer","ev":"item","item":"inverter","seq":67,"stolen":false,"t":46369,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":68,"shell":"live","t":46608,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":69,"t":46854,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[1,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"cigarettes":1},"player":{"adrenaline":1,"beer":1,"inverter":2}},"left":3,"max_hp":3,"sawed":false,"seq":70,"t":46854,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":71,"shell":"blank","t":47521,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":72,"t":47559,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[1,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"cigarettes":1},"player":{"adrenaline":1,"beer":1,"inverter":2}},"left":2,"max_hp":3,"sawed":false,"seq":73,"t":47559,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":74,"stolen":false,"t":47559,"v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":75,"stolen":true,"t":47632,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":76,"shell":"live","t":47699,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":77,"shell":"blank","t":47867,"target":"self","v":1}
+{"blank":3,"ev":"load","first_turn":"player","hp":[1,3],"items":{"dealer":{"adrenaline":1,"burner phone":1,"cigarettes":1,"inverter":2},"player":{"adrenaline":2,"beer":1,"cigarettes":1,"handcuffs":1,"inverter":2}},"kind":"reload","live":3,"max_hp":3,"seq":78,"t":50639,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":79,"shell":"blank","t":51371,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":80,"t":51409,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[1,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"burner phone":1,"cigarettes":1,"inverter":2},"player":{"adrenaline":2,"beer":1,"cigarettes":1,"handcuffs":1,"inverter":2}},"left":5,"max_hp":3,"sawed":false,"seq":81,"t":51409,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"burner phone","seq":82,"stolen":false,"t":51409,"v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":83,"stolen":false,"t":51554,"v":1}
+{"actor":"dealer","ev":"item","item":"handcuffs","seq":84,"stolen":true,"t":51627,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":85,"shell":"live","t":51780,"target":"opponent","v":1}
+{"ev":"end","seq":86,"t":51782,"v":1,"who":"player"}
+{"blank":4,"ev":"load","first_turn":"player","hp":[2,2],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1,"magnifying glass":1},"player":{"adrenaline":1,"expired medicine":1,"inverter":2,"magnifying glass":1}},"kind":"new_round","live":3,"max_hp":2,"seq":87,"t":64771,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":88,"shell":"blank","t":65118,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":89,"t":65148,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1,"magnifying glass":1},"player":{"adrenaline":1,"expired medicine":1,"inverter":2,"magnifying glass":1}},"left":6,"max_hp":2,"sawed":false,"seq":90,"t":65148,"turn":"player","v":1}
+{"actor":"player","ev":"item","item":"magnifying glass","seq":91,"stolen":false,"t":65362,"v":1}
+{"ev":"glass","seq":92,"shell":"live","t":65363,"v":1}
+{"actor":"player","ev":"item","item":"inverter","seq":93,"stolen":false,"t":65712,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":94,"shell":"blank","t":66505,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":95,"t":66543,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1,"magnifying glass":1},"player":{"adrenaline":1,"expired medicine":1,"inverter":1}},"left":5,"max_hp":2,"sawed":false,"seq":96,"t":66543,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"magnifying glass","seq":97,"stolen":false,"t":66543,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":98,"shell":"live","t":66810,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":99,"t":67056,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[1,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1},"player":{"adrenaline":1,"expired medicine":1,"inverter":1}},"left":4,"max_hp":2,"sawed":false,"seq":100,"t":67056,"turn":"player","v":1}
+{"actor":"player","ev":"item","item":"expired medicine","seq":101,"stolen":false,"t":67112,"v":1}
+{"actor":"player","ev":"medicine","healed":true,"seq":102,"t":67222,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":103,"shell":"blank","t":67918,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":104,"t":67948,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1},"player":{"adrenaline":1,"inverter":1}},"left":3,"max_hp":2,"sawed":false,"seq":105,"t":67948,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":106,"shell":"live","t":68570,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":107,"t":68695,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,1],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":2,"cigarettes":1,"expired medicine":1},"player":{"adrenaline":1,"inverter":1}},"left":2,"max_hp":2,"sawed":false,"seq":108,"t":68696,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"cigarettes","seq":109,"stolen":false,"t":68741,"v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":110,"stolen":false,"t":68916,"v":1}
+{"actor":"dealer","ev":"item","item":"inverter","seq":111,"stolen":true,"t":68989,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":112,"shell":"live","t":69228,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":113,"t":69399,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[1,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"expired medicine":1},"player":{"adrenaline":1}},"left":1,"max_hp":2,"sawed":false,"seq":114,"t":69399,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":115,"shell":"blank","t":70005,"target":"opponent","v":1}
+{"blank":2,"ev":"load","first_turn":"player","hp":[1,2],"items":{"dealer":{"adrenaline":1,"burner phone":1,"expired medicine":1,"handsaw":1},"player":{"adrenaline":1,"cigarettes":1,"inverter":1}},"kind":"reload","live":1,"max_hp":2,"seq":116,"t":71373,"v":1}
+{"actor":"player","ev":"item","item":"cigarettes","seq":117,"stolen":false,"t":71662,"v":1}
+{"actor":"player","ev":"item","item":"adrenaline","seq":118,"stolen":false,"t":72012,"v":1}
+{"actor":"player","ev":"item","item":"inverter","seq":119,"stolen":false,"t":72712,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":120,"shell":"blank","t":73518,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":121,"t":73548,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"burner phone":1,"expired medicine":1,"handsaw":1},"player":{}},"left":2,"max_hp":2,"sawed":false,"seq":122,"t":73548,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":123,"shell":"blank","t":74205,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":124,"t":74243,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"burner phone":1,"expired medicine":1,"handsaw":1},"player":{}},"left":1,"max_hp":2,"sawed":false,"seq":125,"t":74243,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":126,"shell":"blank","t":74382,"target":"self","v":1}
+{"blank":3,"ev":"load","first_turn":"player","hp":[2,2],"items":{"dealer":{"adrenaline":1,"beer":2,"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":1},"player":{"adrenaline":1,"handcuffs":1,"handsaw":1,"inverter":1}},"kind":"reload","live":3,"max_hp":2,"seq":127,"t":77323,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":128,"shell":"blank","t":78055,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":129,"t":78093,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"beer":2,"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":1},"player":{"adrenaline":1,"handcuffs":1,"handsaw":1,"inverter":1}},"left":5,"max_hp":2,"sawed":false,"seq":130,"t":78093,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"burner phone","seq":131,"stolen":false,"t":78093,"v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":132,"stolen":false,"t":78238,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":133,"shell":"live","t":78306,"v":1}
+{"actor":"dealer","ev":"item","item":"handsaw","seq":134,"stolen":false,"t":78335,"v":1}
+{"actor":"dealer","ev":"item","item":"handcuffs","seq":135,"stolen":false,"t":78456,"v":1}
+{"actor":"dealer","damage":2,"ev":"shot","seq":136,"shell":"live","t":78608,"target":"opponent","v":1}
+{"ev":"end","seq":137,"t":78610,"v":1,"who":"player"}
+{"blank":3,"ev":"load","first_turn":"player","hp":[2,2],"items":{"dealer":{"adrenaline":1,"beer":1,"handcuffs":1},"player":{"burner phone":1,"expired medicine":1,"inverter":1}},"kind":"new_round","live":2,"max_hp":2,"seq":138,"t":90189,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":139,"shell":"blank","t":90534,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":140,"t":90572,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"beer":1,"handcuffs":1},"player":{"burner phone":1,"expired medicine":1,"inverter":1}},"left":4,"max_hp":2,"sawed":false,"seq":141,"t":90572,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"handcuffs","seq":142,"stolen":false,"t":90572,"v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":143,"stolen":false,"t":90627,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":144,"shell":"blank","t":90695,"v":1}
+{"actor":"dealer","ev":"item","item":"adrenaline","seq":145,"stolen":false,"t":90724,"v":1}
+{"actor":"dealer","ev":"item","item":"burner phone","seq":146,"stolen":true,"t":90797,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":147,"shell":"live","t":91040,"target":"opponent","v":1}
+{"cuffed_skip":true,"ev":"turn","seq":148,"t":91286,"v":1,"who":"player"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[1,2],"hp_hidden":[false,false],"items":{"dealer":{},"player":{"expired medicine":1,"inverter":1}},"left":2,"max_hp":2,"sawed":false,"seq":149,"t":91286,"turn":"player","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":150,"t":91321,"v":1,"who":"dealer"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[1,2],"hp_hidden":[false,false],"items":{"dealer":{},"player":{"expired medicine":1,"inverter":1}},"left":2,"max_hp":2,"sawed":false,"seq":151,"t":91321,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":152,"shell":"blank","t":91459,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":153,"t":91476,"v":1,"who":"dealer"}
+{"cuffed":[true,false],"damage":1,"ev":"sync","hp":[1,2],"hp_hidden":[false,false],"items":{"dealer":{},"player":{"expired medicine":1,"inverter":1}},"left":1,"max_hp":2,"sawed":false,"seq":154,"t":91476,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":155,"shell":"live","t":91551,"target":"opponent","v":1}
+{"ev":"end","seq":156,"t":91553,"v":1,"who":"player"}
+{"blank":1,"ev":"load","first_turn":"player","hp":[3,3],"items":{"dealer":{"beer":1,"cigarettes":1,"magnifying glass":1},"player":{"burner phone":1,"cigarettes":1,"handcuffs":1}},"kind":"new_round","live":1,"max_hp":3,"seq":157,"t":103144,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":158,"shell":"live","t":103443,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":159,"t":103510,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,3],"hp_hidden":[false,false],"items":{"dealer":{"beer":1,"cigarettes":1,"magnifying glass":1},"player":{"burner phone":1,"cigarettes":1,"handcuffs":1}},"left":1,"max_hp":3,"sawed":false,"seq":160,"t":103510,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":161,"shell":"blank","t":103694,"target":"self","v":1}
+{"blank":2,"ev":"load","first_turn":"player","hp":[2,3],"items":{"dealer":{"beer":2,"cigarettes":1,"handcuffs":1,"inverter":1,"magnifying glass":1},"player":{"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":2}},"kind":"reload","live":2,"max_hp":3,"seq":162,"t":105896,"v":1}
+{"actor":"player","ev":"item","item":"handsaw","seq":163,"stolen":false,"t":106185,"v":1}
+{"actor":"player","damage":2,"ev":"shot","seq":164,"shell":"blank","t":106991,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":165,"t":107161,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,3],"hp_hidden":[false,false],"items":{"dealer":{"beer":2,"cigarettes":1,"handcuffs":1,"inverter":1,"magnifying glass":1},"player":{"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":1}},"left":3,"max_hp":3,"sawed":false,"seq":166,"t":107161,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":167,"shell":"live","t":107643,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":168,"t":107768,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[2,2],"hp_hidden":[false,false],"items":{"dealer":{"beer":2,"cigarettes":1,"handcuffs":1,"inverter":1,"magnifying glass":1},"player":{"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":1}},"left":2,"max_hp":3,"sawed":false,"seq":169,"t":107769,"turn":"dealer","v":1}
+{"actor":"dealer","ev":"item","item":"cigarettes","seq":170,"stolen":false,"t":107813,"v":1}
+{"actor":"dealer","ev":"item","item":"magnifying glass","seq":171,"stolen":false,"t":107989,"v":1}
+{"actor":"dealer","ev":"item","item":"beer","seq":172,"stolen":false,"t":108158,"v":1}
+{"actor":"dealer","cause":"beer","ev":"eject","seq":173,"shell":"blank","t":108226,"v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":174,"shell":"live","t":108353,"target":"opponent","v":1}
+{"blank":1,"ev":"load","first_turn":"player","hp":[1,3],"items":{"dealer":{"adrenaline":1,"beer":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"inverter":1,"magnifying glass":2},"player":{"burner phone":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"handsaw":2,"inverter":2}},"kind":"reload","live":1,"max_hp":3,"seq":175,"t":111264,"v":1}
+{"actor":"player","ev":"item","item":"expired medicine","seq":176,"stolen":false,"t":111435,"v":1}
+{"actor":"player","ev":"medicine","healed":true,"seq":177,"t":111545,"v":1}
+{"actor":"player","ev":"item","item":"handcuffs","seq":178,"stolen":false,"t":111785,"v":1}
+{"actor":"player","ev":"item","item":"handsaw","seq":179,"stolen":false,"t":112135,"v":1}
+{"actor":"player","ev":"item","item":"inverter","seq":180,"stolen":false,"t":112485,"v":1}
+{"actor":"player","damage":2,"ev":"shot","seq":181,"shell":"live","t":113244,"target":"self","v":1}
+{"cuffed_skip":true,"ev":"turn","seq":182,"t":113646,"v":1,"who":"dealer"}
+{"cuffed":[false,true],"damage":1,"ev":"sync","hp":[1,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"beer":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"inverter":1,"magnifying glass":2},"player":{"burner phone":1,"cigarettes":1,"handsaw":1,"inverter":1}},"left":1,"max_hp":3,"sawed":false,"seq":183,"t":113646,"turn":"dealer","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":184,"t":113672,"v":1,"who":"player"}
+{"cuffed":[false,true],"damage":1,"ev":"sync","hp":[1,3],"hp_hidden":[false,false],"items":{"dealer":{"adrenaline":1,"beer":1,"cigarettes":1,"expired medicine":1,"handcuffs":1,"inverter":1,"magnifying glass":2},"player":{"burner phone":1,"cigarettes":1,"handsaw":1,"inverter":1}},"left":1,"max_hp":3,"sawed":false,"seq":185,"t":113672,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":186,"shell":"live","t":114293,"target":"self","v":1}
+{"ev":"end","seq":187,"t":114295,"v":1,"who":"player"}
+{"blank":3,"ev":"load","first_turn":"player","hp":[3,3],"items":{"dealer":{"burner phone":1,"handcuffs":1},"player":{"beer":1,"cigarettes":1}},"kind":"new_round","live":2,"max_hp":3,"seq":188,"t":125214,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":189,"shell":"blank","t":125561,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":190,"t":125591,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[3,3],"hp_hidden":[false,false],"items":{"dealer":{"burner phone":1,"handcuffs":1},"player":{"beer":1,"cigarettes":1}},"left":4,"max_hp":3,"sawed":false,"seq":191,"t":125591,"turn":"player","v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":192,"shell":"blank","t":126261,"target":"self","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":193,"t":126291,"v":1,"who":"player"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[3,3],"hp_hidden":[false,false],"items":{"dealer":{"burner phone":1,"handcuffs":1},"player":{"beer":1,"cigarettes":1}},"left":3,"max_hp":3,"sawed":false,"seq":194,"t":126291,"turn":"player","v":1}
+{"actor":"player","ev":"item","item":"beer","seq":195,"stolen":false,"t":126505,"v":1}
+{"actor":"player","cause":"beer","ev":"eject","seq":196,"shell":"live","t":126609,"v":1}
+{"actor":"player","ev":"item","item":"cigarettes","seq":197,"stolen":false,"t":126855,"v":1}
+{"actor":"player","damage":1,"ev":"shot","seq":198,"shell":"blank","t":127648,"target":"opponent","v":1}
+{"cuffed_skip":false,"ev":"turn","seq":199,"t":127686,"v":1,"who":"dealer"}
+{"cuffed":[false,false],"damage":1,"ev":"sync","hp":[3,3],"hp_hidden":[false,false],"items":{"dealer":{"burner phone":1,"handcuffs":1},"player":{}},"left":1,"max_hp":3,"sawed":false,"seq":200,"t":127686,"turn":"dealer","v":1}
+{"actor":"dealer","damage":1,"ev":"shot","seq":201,"shell":"live","t":127783,"target":"opponent","v":1}
